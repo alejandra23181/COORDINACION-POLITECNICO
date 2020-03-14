@@ -1,14 +1,18 @@
 # COORDINACION-POLITECNICO
 
-EQUIPO DE TRABAJO Y ROLES
 
-Maria Alejandra Montoya Acevedo -
-Yuliana Estrada Calle -
-Estafanía Congote Grajales -
-David Noreña -
+EQUIPO DE TRABAJO Y ROLES:
+
+
+Maria Alejandra Montoya Acevedo - Desarrollador
+Yuliana Estrada Calle - Desarrollador
+Estafanía Congote Grajales - Desarrollador
+David Noreña - Desarrollador
+
 
 
 TÍTULO DEL PROYECTO: Sistema de información para la coordinación técnica y física del área de informática para la instituciòn universitaria “Politécnico Colombiano Jaime Isaza Cadavid”
+
  
 DESCRIPCIÓN DEL PROBLEMA Y PLANTEAMIENTO DE PROCESO ACTUAL:
 
