@@ -4,7 +4,7 @@
 EQUIPO DE TRABAJO Y ROLES:
 
 
-Maria Alejandra Montoya Acevedo - Desarrollador
+Maria Alejandra Montoya Acevedo - Lider-Desarrollador
 Yuliana Estrada Calle - Desarrollador
 Estafanía Congote Grajales - Desarrollador
 David Noreña - Desarrollador
