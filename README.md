@@ -3,13 +3,13 @@
 
 EQUIPO DE TRABAJO Y ROLES:
 
-				Maria Alejandra Montoya Acevedo -Desarrollador
+				Maria Alejandra Montoya Acevedo -Lider, Desarrollador.
 
-				Yuliana Estrada Calle - Desarrollador
+				Yuliana Estrada Calle - Consultor, Desarrollador.
 
-				Estafanía Congote Grajales - Desarrollador
+				Estafanía Congote Grajales - Front-end, Desarrollador.
 
-				David Noreña - Desarrollador
+				David Noreña - Analista de pruebas, Desarrollador.
 
 
 
