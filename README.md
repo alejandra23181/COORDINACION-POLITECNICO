@@ -3,7 +3,7 @@
 
 EQUIPO DE TRABAJO Y ROLES:
 
-				Maria Alejandra Montoya Acevedo - Lider-Desarrollador
+				Maria Alejandra Montoya Acevedo -Desarrollador
 
 				Yuliana Estrada Calle - Desarrollador
 
