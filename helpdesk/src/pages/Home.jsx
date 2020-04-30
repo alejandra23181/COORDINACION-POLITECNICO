@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/Home.css';
 
 class Home extends React.Component {
     render() {
@@ -14,22 +15,20 @@ class Home extends React.Component {
                             <a className="p-2 text-dark" href="#">Who we serve </a>
                             <a className="p-2 text-dark" href="#">Our services </a>
                         </nav>
-                        <a class="btn btn-outline-primary" href="#">Sign up</a>
+                        <a className="btn btn-outline-primary" href="#">Sign up</a>
                     </div>
                 </header>
 
                 <main role="main">
-
-                    <section class="jumbotron text-center">
-                        <div class="container">
+                    <section className="jumbotron text-center">
+                        <div className="container">
                             <h1>Poli Dynamics</h1>
-                            <p class="lead text-muted">Poli Dynamic has an option for any member of the educational community, this is "Availability", in which you can find out the hours and availability of the computer rooms.</p>
+                            <p className="lead text-muted">Poli Dynamic has an option for any member of the educational community, this is "Availability", in which you can find out the hours and availability of the computer rooms.</p>
                             <p>
-                                <a href="#" class="btn btn-primary my-2">Go to Availability</a>
+                                <a href="#" className="btn btn-primary my-2">Go to Availability</a>
                             </p>
                         </div>
                     </section>
-
                 </main>
             </div>
 
