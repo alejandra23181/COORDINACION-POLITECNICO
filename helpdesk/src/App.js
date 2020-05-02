@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import Home from './pages/Home'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Tareas from './containers/Solicitudes'
 
 function App() {
   return (
-    <Home />
+    <Tareas />
   );
 }
 
