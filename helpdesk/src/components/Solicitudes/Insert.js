@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ImageNew from '../images/new.png';
 import '../styles/Forms.css';
+import axios from 'axios';
 
 export default class Insert extends Component {
     constructor(props) {
@@ -80,6 +81,20 @@ export default class Insert extends Component {
             Categoria: this.state.Categoria,
             Aula: this.state.Aula
         };
+        //nombre de la base despues del local
+        axios.post('http://localhost/database/Insert.php', obj)
+        .then(res => console.log(res.data));
+
+        this.setState({
+            Id: '',
+            Descipción: '',
+            Fecha: '',
+            Hora: '',
+            Usuario: '',
+            Tecnico: '',
+            Categoria: '',
+            Aula: '',
+        });
         console.log(obj);
     }
 
@@ -94,11 +109,11 @@ export default class Insert extends Component {
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label for="exampleInputEmail1">ID</label>
-                        <textarea type="text" className="form-control" id="exampleInputEmail1"  placeholder="Enter" value={this.state.Id} onChange={this.onChangeId} />
+                        <input type="text" className="form-control" id="exampleInputEmail1"  placeholder="Enter" value={this.state.Id} onChange={this.onChangeId} />
                     </div>
                     <div className="form-group">
                         <label for="exampleInputEmail1">Descipción</label>
-                        <textarea type="text" className="form-control" id="exampleInputEmail1"  placeholder="Enter descripción" value={this.state.Descipcion} onChange={this.onChangeDescripcion}/>
+                        <input type="text" className="form-control" id="exampleInputEmail1"  placeholder="Enter descripción" value={this.state.Descipcion} onChange={this.onChangeDescripcion}/>
                     </div>
                     <div className="form-group">
                         <label for="exampleInputEmail1">Fecha de solicitud</label>

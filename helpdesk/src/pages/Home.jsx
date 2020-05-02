@@ -1,6 +1,6 @@
 import React from 'react';
 import Menu from '../components/Menu'
-import '../components/styles/Home';
+import '../components/styles/Home.css';
 
 class Home extends React.Component {
     render() {

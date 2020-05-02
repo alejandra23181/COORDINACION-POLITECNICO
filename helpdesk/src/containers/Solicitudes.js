@@ -2,7 +2,6 @@ import React from 'react';
 import Insert from '../components/Solicitudes/Insert';
 import Edit from '../components/Solicitudes/Edit';
 import View from '../components/Solicitudes/View';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 

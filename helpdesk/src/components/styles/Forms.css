@@ -23,6 +23,9 @@ label {
     margin-left: 492px;
 }
 
-.btn{
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
     margin-left: 632px;
 }
