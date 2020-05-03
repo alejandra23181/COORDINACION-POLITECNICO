@@ -24,7 +24,7 @@ export default class Insert extends Component {
             Usuario: '',
             Tecnico: '',
             Categoria: '',
-            Aula: '',
+            Aula: ''
         }
     }
 
@@ -82,7 +82,7 @@ export default class Insert extends Component {
             Aula: this.state.Aula
         };
         //nombre de la base despues del local
-        axios.post('http://localhost/database/Insert.php', obj)
+        axios.post('http://localhost:3000/COORDINACION-POLITECNICO/database/Insert.php', obj)
         .then(res => console.log(res.data));
 
         this.setState({
@@ -106,7 +106,7 @@ export default class Insert extends Component {
                     <h2>Create new request</h2>
                 </div>
 
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} method="POST" action="">
                     <div className="form-group">
                         <label for="exampleInputEmail1">ID</label>
                         <input type="text" className="form-control" id="exampleInputEmail1"  placeholder="Enter" value={this.state.Id} onChange={this.onChangeId} />
