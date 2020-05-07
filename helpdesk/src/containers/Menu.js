@@ -8,6 +8,7 @@ import Nosotros from '../pages/nosotros/Nosotros';
 import Servimos from '../pages/servimos/Servimos';
 import Footer from '../components/Footer/Footer';
 
+
 function Menu() {
   return (
     <Router>
@@ -16,6 +17,7 @@ function Menu() {
           <Route path="/nosotros" component={Nosotros} />
           <Route path="/nuestros-servicios" component={NuestrosServicios} />
           <Route path="/a-quien-servimos" component={Servimos} />
+          <Route path="/login" component={Home} />
           <Route path="/" component={Home} />
         </Switch>
         <Footer />

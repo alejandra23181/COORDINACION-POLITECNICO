@@ -1,8 +1,8 @@
 import React from "react";
 import Presentacion from "../../components/Presentacion/Presentacion";
-import C1 from '../../components/images/servimos/Icon-1.svg';
-import C2 from '../../components/images/servimos/Icon-2.svg';
-import C3 from '../../components/images/servimos/Icon-3.svg';
+import C1 from '../../components/images/servimos/Icon-1.PNG';
+import C2 from '../../components/images/servimos/Icon-2.PNG';
+import C3 from '../../components/images/servimos/Icon-3.PNG';
 
 
 export default function Servimos() {
