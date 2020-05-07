@@ -1,6 +1,8 @@
 .cp-nosotros {
     .cp-container {
-        padding: 30px 25px;
+        padding: 35px 25px;
+        width: 1356px;
+        margin-left: 16px;
 
         @keyframes animate-image {
             from {  opacity: 0; }
@@ -29,6 +31,11 @@
             margin-bottom: -50px;
             color: var(--color-primary);
         }
+                      
+        
+    }
+    article{
+        text-align: justify;
     }
 
     
