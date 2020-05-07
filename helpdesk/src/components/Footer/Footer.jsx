@@ -1,10 +1,10 @@
 import React from "react";
-import './Footer.scss';
+import '../styles/Footer.scss';
 
 export default function Footer() {
     return(
         <footer className="cp-footer">
-            <span>Poli Dynamics © SOFTWARE</span>
+            <span>Poli Dynamics ©Software intsritucional</span>
         </footer>
     )
 }

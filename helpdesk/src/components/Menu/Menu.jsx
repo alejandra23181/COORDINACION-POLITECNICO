@@ -1,21 +1,21 @@
 import React from 'react';
-import "./Menu.scss";
+import "../styles/Menu.scss";
 import { NavLink } from 'react-router-dom';
 
 
 function Menu () {
     const items = [
         {
-            name:'INICIO',
+            name:'Inicio',
             path:'/'
         }, {
-            name:'ACERCA DE NOSOTROS',
+            name:'Acerca de nosotros',
             path:'/nosotros'
         }, {    
-            name:'NUESTROS SERVICIOS',
+            name:'Nuestros servicios',
             path:'/nuestros-servicios'
         }, {
-            name:'A QUIÉN SERVIMOS',
+            name:'A quién servimos',
             path:'/a-quien-servimos'
         }
     ]

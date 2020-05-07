@@ -1,5 +1,5 @@
 import React from 'react';
-import './Carrusel.scss';
+import '../styles/Carrusel.scss';
 import C1 from '../images/carrusel/c1.jpg';
 import C2 from '../images/carrusel/c2.jpg';
 import C3 from '../images/carrusel/c3.png';

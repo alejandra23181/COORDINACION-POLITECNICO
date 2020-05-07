@@ -1,5 +1,5 @@
 import React from 'react';
-import './Presentacion.scss';
+import '../styles/Presentacion.scss';
 
 function Presentacion({data}) {
     return (

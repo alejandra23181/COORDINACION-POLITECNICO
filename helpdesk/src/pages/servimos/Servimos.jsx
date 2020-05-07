@@ -14,8 +14,13 @@ export default function Servimos() {
     ]
 
     return (
-        <main>
-            <Presentacion data={data} />
+        <main className="cp-nosotros" >
+            <div className="cp-container" >
+                <article className='cp-article' >
+                    <h4>A QUIÉN SERVIMOS</h4>
+                </article>
+                <Presentacion data={data} />
+            </div>
         </main>
     )
 }

@@ -1,0 +1,35 @@
+.cp-nosotros {
+    .cp-container {
+        padding: 30px 25px;
+
+        @keyframes animate-image {
+            from {  opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        img {
+            animation: animate-image 1s;
+            width: 33.33%;
+            padding: 10px;
+        }
+    }
+
+    .cp-article {
+        text-align: center;
+        padding: 0 25px;
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 21px;
+            color: var(--color-primary);
+        }
+        h4 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: -56px;
+            color: var(--color-primary);
+        }
+    }
+
+    
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import Carrusel from '../../components/Carrusel/Carrusel';
-import './home.scss';
+import '../../components/styles/home.scss';
 
 export default function Home() {
 
