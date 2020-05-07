@@ -1,3 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary:#196F3E;
+  --color-secondary:#EFC517;
+}
+
 .App {
   text-align: center;
 }

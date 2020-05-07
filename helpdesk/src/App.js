@@ -1,12 +1,26 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Tareas from './containers/Solicitudes'
-import Home from './pages/Home'
+import Home from './pages/home/Home'
+import {  BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Menu from './components/Menu/Menu';
+import NuestrosServicios from './pages/nuestros-servicios/NuestrosServicios';
+import Nosotros from './pages/nosotros/Nosotros';
+import Servimos from './pages/servimos/Servimos';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
-    <Home />
+    <Router>
+        <Menu />
+        <Switch>
+          <Route path="/nosotros" component={Nosotros} />
+          <Route path="/nuestros-servicios" component={NuestrosServicios} />
+          <Route path="/a-quien-servimos" component={Servimos} />
+          <Route path="/" component={Home} />
+        </Switch>
+        <Footer />
+    </Router>
   );
 }
 

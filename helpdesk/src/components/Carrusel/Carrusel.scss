@@ -1,0 +1,19 @@
+.cp-carrusel {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+
+    .carousel-inner {
+        .item {
+            img {
+                width: 100%;
+                height: 400px;
+                object-position: top;
+                object-fit: cover;
+            }
+        }
+
+
+
+    }
+}
