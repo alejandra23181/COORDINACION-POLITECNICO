@@ -31,3 +31,5 @@ JUSTIFICACIÓN:
 Se planteó esta propuesta, ya que al evidenciar dicha problemática pudimos conocer cuánto afecta esto a la institución, debido a que las aulas de informática son unas de las más visitadas por toda la comunidad universitaria y al presentarse esta gran cantidad de incidentes no se puede hacer uso de todos los recursos existentes, ya sea por problemas básicos o graves. 
 
 Este sistema de información va a servir para poder darle solución a las múltiples solicitudes que se presentan y que son registradas por parte de la comunidad, también se va a poder reportar cualquier incidente que se presente, por ende,  se  podrá llevar a cabo una auditoría de los diferentes casos que se están presentando en la institución , gracias a esto los coordinadores del área van a poder llegar a tomar decisiones acerca del comportamiento y el uso que se le dan estas.
+
+Prototipo: https://marvelapp.com/57d7ji5
