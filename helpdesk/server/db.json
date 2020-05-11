@@ -1,0 +1,14 @@
+{
+    "solicitud": [
+      {
+        "Descipción": "Mantenimiento pc",
+        "Fecha": "12/12/2019",
+        "Hora": "12:00:00",
+        "Usuario": "Maria Alejandra",
+        "Tecnico": "Julian",
+        "Categoria": "Mantenimiento pc",
+        "Aula": "207",
+        "Id": 1
+      }
+    ]
+  }
