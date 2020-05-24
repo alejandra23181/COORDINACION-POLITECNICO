@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import '../../components/styles/Solicitudes.css';
 import axios from 'axios';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Label, Table, Input, Button, FormGroup } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Label, Table, Input, Button, FormGroup, Row, Col } from 'reactstrap';
 
 
 class CRUDSolicitud extends Component {
@@ -39,7 +39,7 @@ class CRUDSolicitud extends Component {
   //Nueva solicitud
   toggleNewSolicitud() {
     this.setState({
-      NewSolicitud: ! this.state.NewSolicitud
+      NewSolicitud: !this.state.NewSolicitud
     })
   }
 
@@ -47,7 +47,7 @@ class CRUDSolicitud extends Component {
 
   toggleEditSolicitud() {
     this.setState({
-      EditMSolicitud: ! this.state.EditMSolicitud
+      EditMSolicitud: !this.state.EditMSolicitud
     })
   }
 
@@ -55,7 +55,8 @@ class CRUDSolicitud extends Component {
     axios.post('http://localhost:3001/solicitudes', this.state.NewDataSolicitud).then((response) => {
       let { solicitudes } = this.state;
       solicitudes.push(response.data);
-      this.setState({ solicitudes, NewSolicitud: false,  NewDataSolicitud: {
+      this.setState({
+        solicitudes, NewSolicitud: false, NewDataSolicitud: {
           Cliente: '',
           Correo: '',
           Asunto: '',
@@ -63,43 +64,43 @@ class CRUDSolicitud extends Component {
           Prioridad: '',
           Aula: '',
           Fecha: ''
-        }      
+        }
       });
     });
   }
 
   //Editar
 
-  UpdateSolicitud(){
+  UpdateSolicitud() {
 
-    let { Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha} = this.state.EditDataSolicitud;
+    let { Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha } = this.state.EditDataSolicitud;
 
     axios.put('http://localhost:3001/solicitudes/' + this.state.EditDataSolicitud.id, {
       Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha
     }).then((response) => {
       this._refreshSolicitud();
       this.setState({
-        EditMSolicitud: false, EditDataSolicitud: {id: '', Cliente: '', Correo: '', Asunto: '', Detalle: '', Prioridad: '', Aula: '', Fecha: ''}
+        EditMSolicitud: false, EditDataSolicitud: { id: '', Cliente: '', Correo: '', Asunto: '', Detalle: '', Prioridad: '', Aula: '', Fecha: '' }
       })
     });
 
   }
 
-  editSolicitud(id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha){
+  editSolicitud(id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha) {
     this.setState({
-      EditDataSolicitud: {id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha}, EditMSolicitud: ! this.state.EditMSolicitud
+      EditDataSolicitud: { id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha }, EditMSolicitud: !this.state.EditMSolicitud
     });
   }
 
-    //Delete
-    deleteSolicitud(id){
-      axios.delete('http://localhost:3001/solicitudes/'+ id).then((response) => {
-        this._refreshSolicitud();
-      });
-    }
+  //Delete
+  deleteSolicitud(id) {
+    axios.delete('http://localhost:3001/solicitudes/' + id).then((response) => {
+      this._refreshSolicitud();
+    });
+  }
 
   //Refresh
-  _refreshSolicitud(){
+  _refreshSolicitud() {
     axios.get('http://localhost:3001/solicitudes').then((response) => {
       this.setState({
         solicitudes: response.data
@@ -109,7 +110,7 @@ class CRUDSolicitud extends Component {
 
 
 
- //Render
+  //Render
   render() {
     let solicitudes = this.state.solicitudes.map((solicitud) => {
       return (
@@ -123,7 +124,7 @@ class CRUDSolicitud extends Component {
           <td>{solicitud.Aula}</td>
           <td>{solicitud.Fecha}</td>
           <td>
-            <Button color="success" size="sm" className="mr-2" onClick={this.editSolicitud.bind(this, solicitud.id,solicitud.Cliente,solicitud.Correo,solicitud.Asunto,solicitud.Detalle,solicitud.Prioridad,solicitud.Aula,solicitud.Fecha)}>Actualizar</Button>
+            <Button color="success" size="sm" className="mr-2" onClick={this.editSolicitud.bind(this, solicitud.id, solicitud.Cliente, solicitud.Correo, solicitud.Asunto, solicitud.Detalle, solicitud.Prioridad, solicitud.Aula, solicitud.Fecha)}>Actualizar</Button>
             <Button color="danger" size="sm" onClick={this.deleteSolicitud.bind(this, solicitud.id)}>Eliminar</Button>
           </td>
         </tr>
@@ -139,171 +140,206 @@ class CRUDSolicitud extends Component {
           <ModalHeader toggle={this.toggleNewSolicitud.bind(this)}>Nueva solicitud</ModalHeader>
           <ModalBody>
 
-            <FormGroup>
-              <Label for="Cliente">Cliente</Label>
-              <Input id="Cliente"  value={ this.state.NewDataSolicitud.Cliente } onChange={(e)=>{
-                let { NewDataSolicitud } = this.state;
-                NewDataSolicitud.Cliente = e.target.value;
-                this.setState({ NewDataSolicitud });
-                }
-              }/>
-            </FormGroup>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="Cliente">Cliente</Label>
+                  <Input id="Cliente" value={this.state.NewDataSolicitud.Cliente} onChange={(e) => {
+                    let { NewDataSolicitud } = this.state;
+                    NewDataSolicitud.Cliente = e.target.value;
+                    this.setState({ NewDataSolicitud });
+                  }
+                  } />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
 
-            <FormGroup>
-              <Label for="Correo">Correo</Label>
-              <Input id="Correo" value={ this.state.NewDataSolicitud.Correo } onChange={(e)=>{
-                let { NewDataSolicitud } = this.state;
-                NewDataSolicitud.Correo = e.target.value;
-                this.setState({ NewDataSolicitud });
-                }
-              }/>
-            </FormGroup>
-            <FormGroup>
-              
-              <Label for="Asunto">Asunto</Label>
-              <Input id="Asunto" value={ this.state.NewDataSolicitud.Asunto } onChange={(e)=>{
-                let { NewDataSolicitud } = this.state;
-                NewDataSolicitud.Asunto = e.target.value;
-                this.setState({ NewDataSolicitud });
-                }
-              }/>
-            </FormGroup>
+                <FormGroup>
+                  <Label for="Correo">Correo</Label>
+                  <Input id="Correo" value={this.state.NewDataSolicitud.Correo} onChange={(e) => {
+                    let { NewDataSolicitud } = this.state;
+                    NewDataSolicitud.Correo = e.target.value;
+                    this.setState({ NewDataSolicitud });
+                  }
+                  } />
+                </FormGroup>
+              </Col>
+            </Row>
 
-            <FormGroup>
-              <Label for="Detalle">Detalle</Label>
-              <Input id="Detalle" value={ this.state.NewDataSolicitud.Detalle } onChange={(e)=>{
-                let { NewDataSolicitud } = this.state;
-                NewDataSolicitud.Detalle = e.target.value;
-                this.setState({ NewDataSolicitud });
-                }
-              }/>
-            </FormGroup>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
 
-            <FormGroup>
-              <Label for="Prioridad">Prioridad</Label>
-              <Input id="Prioridad" type="select" value={ this.state.NewDataSolicitud.Prioridad } onChange={(e)=>{
-                let { NewDataSolicitud } = this.state;
-                NewDataSolicitud.Prioridad = e.target.value;
-                this.setState({ NewDataSolicitud });
-                }
-              }
-              >
-              <option>Seleccione una opción</option>
-              <option>Baja</option>
-              <option>Media</option>
-              <option>Alta</option>
-              </Input>
-            </FormGroup>
+                  <Label for="Asunto">Asunto</Label>
+                  <Input id="Asunto" value={this.state.NewDataSolicitud.Asunto} onChange={(e) => {
+                    let { NewDataSolicitud } = this.state;
+                    NewDataSolicitud.Asunto = e.target.value;
+                    this.setState({ NewDataSolicitud });
+                  }
+                  } />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="Detalle">Detalle</Label>
+                  <Input id="Detalle" value={this.state.NewDataSolicitud.Detalle} onChange={(e) => {
+                    let { NewDataSolicitud } = this.state;
+                    NewDataSolicitud.Detalle = e.target.value;
+                    this.setState({ NewDataSolicitud });
+                  }
+                  } />
+                </FormGroup>
+              </Col>
+            </Row>
 
-            <FormGroup>
-              <Label for="Aula">Aula</Label>
-              <Input id="Aula" value={ this.state.NewDataSolicitud.Aula } onChange={(e)=>{
-                let { NewDataSolicitud } = this.state;
-                NewDataSolicitud.Aula = e.target.value;
-                this.setState({ NewDataSolicitud });
-                }
-              }/>
-            </FormGroup>
-
-            <FormGroup>
-              <Label for="Fecha">Fecha</Label>
-              <Input id="Fecha" type="date" value={ this.state.NewDataSolicitud.Fecha } onChange={(e)=>{
-                let { NewDataSolicitud } = this.state;
-                NewDataSolicitud.Fecha = e.target.value;
-                this.setState({ NewDataSolicitud });
-                }
-              }/>
-            </FormGroup>
-
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="Prioridad">Prioridad</Label>
+                  <Input id="Prioridad" type="select" value={this.state.NewDataSolicitud.Prioridad} onChange={(e) => {
+                    let { NewDataSolicitud } = this.state;
+                    NewDataSolicitud.Prioridad = e.target.value;
+                    this.setState({ NewDataSolicitud });
+                  }
+                  }
+                  >
+                    <option>Seleccione una opción</option>
+                    <option>Baja</option>
+                    <option>Media</option>
+                    <option>Alta</option>
+                  </Input>
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="Aula">Aula</Label>
+                  <Input id="Aula" value={this.state.NewDataSolicitud.Aula} onChange={(e) => {
+                    let { NewDataSolicitud } = this.state;
+                    NewDataSolicitud.Aula = e.target.value;
+                    this.setState({ NewDataSolicitud });
+                  }
+                  } />
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="Fecha">Fecha</Label>
+                  <Input id="Fecha" type="date" value={this.state.NewDataSolicitud.Fecha} onChange={(e) => {
+                    let { NewDataSolicitud } = this.state;
+                    NewDataSolicitud.Fecha = e.target.value;
+                    this.setState({ NewDataSolicitud });
+                  }
+                  } />
+                </FormGroup>
+              </Col>
+            </Row>
           </ModalBody>
           <ModalFooter>
             <Button color="warning" onClick={this.addSolicitud.bind(this)}>Enviar</Button>
             <Button color="secondary" onClick={this.toggleNewSolicitud.bind(this)}>Cancelar</Button>
           </ModalFooter>
         </Modal>
-        
+
 
         <Modal isOpen={this.state.EditMSolicitud} toggle={this.toggleEditSolicitud.bind(this)}>
           <ModalHeader toggle={this.toggleEditSolicitud.bind(this)}>Editar solicitud</ModalHeader>
           <ModalBody>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="Cliente">Cliente</Label>
+                  <Input id="Cliente" value={this.state.EditDataSolicitud.Cliente} onChange={(e) => {
+                    let { EditDataSolicitud } = this.state;
+                    EditDataSolicitud.Cliente = e.target.value;
+                    this.setState({ EditDataSolicitud });
+                  }
+                  } />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="Correo">Correo</Label>
+                  <Input id="Correo" value={this.state.EditDataSolicitud.Correo} onChange={(e) => {
+                    let { EditDataSolicitud } = this.state;
+                    EditDataSolicitud.Correo = e.target.value;
+                    this.setState({ EditDataSolicitud });
+                  }
+                  } />
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
 
-            <FormGroup>
-              <Label for="Cliente">Cliente</Label>
-              <Input id="Cliente"  value={ this.state.EditDataSolicitud.Cliente } onChange={(e)=>{
-                let { EditDataSolicitud } = this.state;
-                EditDataSolicitud.Cliente = e.target.value;
-                this.setState({ EditDataSolicitud });
-                }
-              }/>
-            </FormGroup>
+                  <Label for="Asunto">Asunto</Label>
+                  <Input id="Asunto" value={this.state.EditDataSolicitud.Asunto} onChange={(e) => {
+                    let { EditDataSolicitud } = this.state;
+                    EditDataSolicitud.Asunto = e.target.value;
+                    this.setState({ EditDataSolicitud });
+                  }
+                  } />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="Detalle">Detalle</Label>
+                  <Input id="Detalle" value={this.state.EditDataSolicitud.Detalle} onChange={(e) => {
+                    let { EditDataSolicitud } = this.state;
+                    EditDataSolicitud.Detalle = e.target.value;
+                    this.setState({ EditDataSolicitud });
+                  }
+                  } />
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="Prioridad">Prioridad</Label>
+                  <Input id="Prioridad" value={this.state.EditDataSolicitud.Prioridad} onChange={(e) => {
+                    let { EditDataSolicitud } = this.state;
+                    EditDataSolicitud.Prioridad = e.target.value;
+                    this.setState({ EditDataSolicitud });
+                  }
+                  } />
+                </FormGroup>
+              </Col>
 
-            <FormGroup>
-              <Label for="Correo">Correo</Label>
-              <Input id="Correo" value={ this.state.EditDataSolicitud.Correo } onChange={(e)=>{
-                let { EditDataSolicitud } = this.state;
-                EditDataSolicitud.Correo = e.target.value;
-                this.setState({ EditDataSolicitud });
-                }
-              }/>
-            </FormGroup>
-            <FormGroup>
-              
-              <Label for="Asunto">Asunto</Label>
-              <Input id="Asunto" value={ this.state.EditDataSolicitud.Asunto } onChange={(e)=>{
-                let { EditDataSolicitud } = this.state;
-                EditDataSolicitud.Asunto = e.target.value;
-                this.setState({ EditDataSolicitud });
-                }
-              }/>
-            </FormGroup>
-
-            <FormGroup>
-              <Label for="Detalle">Detalle</Label>
-              <Input id="Detalle" value={ this.state.EditDataSolicitud.Detalle } onChange={(e)=>{
-                let { EditDataSolicitud } = this.state;
-                EditDataSolicitud.Detalle = e.target.value;
-                this.setState({ EditDataSolicitud });
-                }
-              }/>
-            </FormGroup>
-
-            <FormGroup>
-              <Label for="Prioridad">Prioridad</Label>
-              <Input id="Prioridad" value={ this.state.EditDataSolicitud.Prioridad } onChange={(e)=>{
-                let { EditDataSolicitud } = this.state;
-                EditDataSolicitud.Prioridad = e.target.value;
-                this.setState({ EditDataSolicitud });
-                }
-              }/>
-            </FormGroup>
-
-            <FormGroup>
-              <Label for="Aula">Aula</Label>
-              <Input id="Aula" value={ this.state.EditDataSolicitud.Aula } onChange={(e)=>{
-                let { EditDataSolicitud } = this.state;
-                EditDataSolicitud.Aula = e.target.value;
-                this.setState({ EditDataSolicitud });
-                }
-              }/>
-            </FormGroup>
-
-            <FormGroup>
-              <Label for="Fecha">Fecha esperada</Label>
-              <Input id="Fecha" type="date" value={ this.state.EditDataSolicitud.Fecha } onChange={(e)=>{
-                let { EditDataSolicitud } = this.state;
-                EditDataSolicitud.Fecha = e.target.value;
-                this.setState({ EditDataSolicitud });
-                }
-              }/>
-            </FormGroup>
-
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="Aula">Aula</Label>
+                  <Input id="Aula" value={this.state.EditDataSolicitud.Aula} onChange={(e) => {
+                    let { EditDataSolicitud } = this.state;
+                    EditDataSolicitud.Aula = e.target.value;
+                    this.setState({ EditDataSolicitud });
+                  }
+                  } />
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="Fecha">Fecha esperada</Label>
+                  <Input id="Fecha" type="date" value={this.state.EditDataSolicitud.Fecha} onChange={(e) => {
+                    let { EditDataSolicitud } = this.state;
+                    EditDataSolicitud.Fecha = e.target.value;
+                    this.setState({ EditDataSolicitud });
+                  }
+                  } />
+                </FormGroup>
+              </Col>
+            </Row>
           </ModalBody>
           <ModalFooter>
             <Button color="warning" onClick={this.UpdateSolicitud.bind(this)}>Actualizar</Button>
             <Button color="secondary" onClick={this.toggleEditSolicitud.bind(this)}>Cancelar</Button>
           </ModalFooter>
         </Modal>
-    
+
         <Table className="table-bordered">
           <thead>
             <tr>
