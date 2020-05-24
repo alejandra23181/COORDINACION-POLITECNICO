@@ -122,8 +122,8 @@ class CRUDSolicitud extends Component {
           <td>{solicitud.Aula}</td>
           <td>{solicitud.Categoria}</td>
           <td>
-            <Button color="success" size="sm" className="mr-2" onClick={this.editSolicitud.bind(this, solicitud.id,solicitud.Cliente,solicitud.Correo,solicitud.Asunto,solicitud.Detalle,solicitud.Prioridad,solicitud.Aula,solicitud.Categoria)}>Edit</Button>
-            <Button color="danger" size="sm" onClick={this.deleteSolicitud.bind(this, solicitud.id)}>Delete</Button>
+            <Button color="success" size="sm" className="mr-2" onClick={this.editSolicitud.bind(this, solicitud.id,solicitud.Cliente,solicitud.Correo,solicitud.Asunto,solicitud.Detalle,solicitud.Prioridad,solicitud.Aula,solicitud.Categoria)}>Actualizar</Button>
+            <Button color="danger" size="sm" onClick={this.deleteSolicitud.bind(this, solicitud.id)}>Eliminar</Button>
           </td>
         </tr>
       )
@@ -131,11 +131,11 @@ class CRUDSolicitud extends Component {
     return (
       <div className="App container">
 
-        <h1>Crear solicitud</h1>
+        <h1>Listado de solicitudes</h1>
 
         <Button color="primary" onClick={this.toggleNewSolicitud.bind(this)}>Nueva solicitud</Button>
         <Modal isOpen={this.state.NewSolicitud} toggle={this.toggleNewSolicitud.bind(this)}>
-          <ModalHeader toggle={this.toggleNewSolicitud.bind(this)}>Modal title</ModalHeader>
+          <ModalHeader toggle={this.toggleNewSolicitud.bind(this)}>Nueva solicitud</ModalHeader>
           <ModalBody>
 
             <FormGroup>
@@ -217,7 +217,7 @@ class CRUDSolicitud extends Component {
         
 
         <Modal isOpen={this.state.EditMSolicitud} toggle={this.toggleEditSolicitud.bind(this)}>
-          <ModalHeader toggle={this.toggleEditSolicitud.bind(this)}>Modal title</ModalHeader>
+          <ModalHeader toggle={this.toggleEditSolicitud.bind(this)}>Editar solicitud</ModalHeader>
           <ModalBody>
 
             <FormGroup>
@@ -292,14 +292,11 @@ class CRUDSolicitud extends Component {
 
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.UpdateSolicitud.bind(this)}>Enviar</Button>
+            <Button color="primary" onClick={this.UpdateSolicitud.bind(this)}>Actualizar</Button>
             <Button color="secondary" onClick={this.toggleEditSolicitud.bind(this)}>Cancelar</Button>
           </ModalFooter>
         </Modal>
-        
-
-
-
+    
         <Table>
           <thead>
             <tr>
