@@ -4,15 +4,15 @@ import Home from '../pages/home/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Menu1 from '../components/Menu/Menu2';
 import Footer from '../components/Footer/Footer';
-import Insert from '../pages/solicitud/Insert';
+import CRUDSolicitud from '../pages/solicitud/CRUDSolicitud';
+
 
 function Solicitudes() {
     return (
         <Router>
             <Menu1 />
             <Switch>
-                <Route path="/Insert" component={Insert} /> 
-                <Route path="/" component={Home} />
+                <Route path="/solicitudes" component={CRUDSolicitud} />
             </Switch>
             <Footer />
         </Router>

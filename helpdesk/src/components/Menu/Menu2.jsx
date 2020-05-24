@@ -9,8 +9,8 @@ function Menu2 () {
             name:'Inicio',
             path:'/'
         }, {
-            name:'Crear nueva solicitud',
-            path:'/Insert'
+            name:'Solicitudes',
+            path:'/solicitudes'
         }
     ]
     

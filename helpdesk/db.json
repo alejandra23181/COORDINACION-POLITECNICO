@@ -1,0 +1,14 @@
+{
+  "solicitudes": [
+    {
+      "Cliente": "hola kmas",
+      "Correo": "hola",
+      "Asunto": "hola",
+      "Detalle": "hola",
+      "Prioridad": "hola",
+      "Aula": "hola",
+      "Categoria": "hola",
+      "id": 1
+    }
+  ]
+}
