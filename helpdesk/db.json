@@ -1,44 +1,14 @@
 {
   "solicitudes": [
     {
-      "Cliente": "hola kmas",
-      "Correo": "hola",
-      "Asunto": "hola",
-      "Detalle": "hola",
-      "Prioridad": "hola",
-      "Aula": "hola",
-      "Categoria": "hola",
-      "id": 1
-    },
-    {
-      "Cliente": "f",
-      "Correo": "f",
-      "Asunto": "f",
-      "Detalle": "f",
-      "Prioridad": "f",
-      "Aula": "f",
-      "Categoria": "f",
-      "id": 2
-    },
-    {
-      "Cliente": "alejandra",
-      "Correo": "u",
-      "Asunto": "u",
-      "Detalle": "u",
-      "Prioridad": "u",
-      "Aula": "u",
-      "Categoria": "uu",
-      "id": 3
-    },
-    {
-      "Cliente": "h",
-      "Correo": "h",
-      "Asunto": "h",
-      "Detalle": "h",
-      "Prioridad": "h",
-      "Aula": "hh",
-      "Categoria": "h",
-      "id": 4
+      "Cliente": "Maria Alejandra Montoya ",
+      "Correo": "acevedoalejandra11@gmail.com",
+      "Asunto": "Daño con internet",
+      "Detalle": "Daño con internet",
+      "Prioridad": "Media",
+      "Aula": "207",
+      "Fecha": "2020-05-14",
+      "id": 8
     }
   ]
 }

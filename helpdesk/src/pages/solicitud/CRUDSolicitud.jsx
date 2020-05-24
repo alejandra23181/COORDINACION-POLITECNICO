@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import '../../components/styles/Solicitudes.css';
 import axios from 'axios';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Label, Table, Input, Button, FormGroup } from 'reactstrap';
 
@@ -13,7 +14,7 @@ class CRUDSolicitud extends Component {
       Detalle: '',
       Prioridad: '',
       Aula: '',
-      Categoria: ''
+      Fecha: ''
     },
 
     EditDataSolicitud: {
@@ -24,7 +25,7 @@ class CRUDSolicitud extends Component {
       Detalle: '',
       Prioridad: '',
       Aula: '',
-      Categoria: ''
+      Fecha: ''
     },
 
     NewSolicitud: false,
@@ -61,7 +62,7 @@ class CRUDSolicitud extends Component {
           Detalle: '',
           Prioridad: '',
           Aula: '',
-          Categoria: ''
+          Fecha: ''
         }      
       });
     });
@@ -71,22 +72,22 @@ class CRUDSolicitud extends Component {
 
   UpdateSolicitud(){
 
-    let { Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Categoria} = this.state.EditDataSolicitud;
+    let { Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha} = this.state.EditDataSolicitud;
 
     axios.put('http://localhost:3001/solicitudes/' + this.state.EditDataSolicitud.id, {
-      Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Categoria
+      Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha
     }).then((response) => {
       this._refreshSolicitud();
       this.setState({
-        EditMSolicitud: false, EditDataSolicitud: {id: '', Cliente: '', Correo: '', Asunto: '', Detalle: '', Prioridad: '', Aula: '', Categoria: ''}
+        EditMSolicitud: false, EditDataSolicitud: {id: '', Cliente: '', Correo: '', Asunto: '', Detalle: '', Prioridad: '', Aula: '', Fecha: ''}
       })
     });
 
   }
 
-  editSolicitud(id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Categoria){
+  editSolicitud(id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha){
     this.setState({
-      EditDataSolicitud: {id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Categoria}, EditMSolicitud: ! this.state.EditMSolicitud
+      EditDataSolicitud: {id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha}, EditMSolicitud: ! this.state.EditMSolicitud
     });
   }
 
@@ -120,9 +121,9 @@ class CRUDSolicitud extends Component {
           <td>{solicitud.Detalle}</td>
           <td>{solicitud.Prioridad}</td>
           <td>{solicitud.Aula}</td>
-          <td>{solicitud.Categoria}</td>
+          <td>{solicitud.Fecha}</td>
           <td>
-            <Button color="success" size="sm" className="mr-2" onClick={this.editSolicitud.bind(this, solicitud.id,solicitud.Cliente,solicitud.Correo,solicitud.Asunto,solicitud.Detalle,solicitud.Prioridad,solicitud.Aula,solicitud.Categoria)}>Actualizar</Button>
+            <Button color="success" size="sm" className="mr-2" onClick={this.editSolicitud.bind(this, solicitud.id,solicitud.Cliente,solicitud.Correo,solicitud.Asunto,solicitud.Detalle,solicitud.Prioridad,solicitud.Aula,solicitud.Fecha)}>Actualizar</Button>
             <Button color="danger" size="sm" onClick={this.deleteSolicitud.bind(this, solicitud.id)}>Eliminar</Button>
           </td>
         </tr>
@@ -131,7 +132,7 @@ class CRUDSolicitud extends Component {
     return (
       <div className="App container">
 
-        <h1>Listado de solicitudes</h1>
+        <h4>LISTADO DE SOLICITUDES</h4>
 
         <Button color="primary" onClick={this.toggleNewSolicitud.bind(this)}>Nueva solicitud</Button>
         <Modal isOpen={this.state.NewSolicitud} toggle={this.toggleNewSolicitud.bind(this)}>
@@ -180,12 +181,18 @@ class CRUDSolicitud extends Component {
 
             <FormGroup>
               <Label for="Prioridad">Prioridad</Label>
-              <Input id="Prioridad" value={ this.state.NewDataSolicitud.Prioridad } onChange={(e)=>{
+              <Input id="Prioridad" type="select" value={ this.state.NewDataSolicitud.Prioridad } onChange={(e)=>{
                 let { NewDataSolicitud } = this.state;
                 NewDataSolicitud.Prioridad = e.target.value;
                 this.setState({ NewDataSolicitud });
                 }
-              }/>
+              }
+              >
+              <option>Seleccione una opción</option>
+              <option>Baja</option>
+              <option>Media</option>
+              <option>Alta</option>
+              </Input>
             </FormGroup>
 
             <FormGroup>
@@ -199,10 +206,10 @@ class CRUDSolicitud extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label for="Categoria">Categoria</Label>
-              <Input id="Categoria" value={ this.state.NewDataSolicitud.Categoria } onChange={(e)=>{
+              <Label for="Fecha">Fecha</Label>
+              <Input id="Fecha" type="date" value={ this.state.NewDataSolicitud.Fecha } onChange={(e)=>{
                 let { NewDataSolicitud } = this.state;
-                NewDataSolicitud.Categoria = e.target.value;
+                NewDataSolicitud.Fecha = e.target.value;
                 this.setState({ NewDataSolicitud });
                 }
               }/>
@@ -210,7 +217,7 @@ class CRUDSolicitud extends Component {
 
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.addSolicitud.bind(this)}>Enviar</Button>
+            <Button color="warning" onClick={this.addSolicitud.bind(this)}>Enviar</Button>
             <Button color="secondary" onClick={this.toggleNewSolicitud.bind(this)}>Cancelar</Button>
           </ModalFooter>
         </Modal>
@@ -281,10 +288,10 @@ class CRUDSolicitud extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label for="Categoria">Categoria</Label>
-              <Input id="Categoria" value={ this.state.EditDataSolicitud.Categoria } onChange={(e)=>{
+              <Label for="Fecha">Fecha esperada</Label>
+              <Input id="Fecha" type="date" value={ this.state.EditDataSolicitud.Fecha } onChange={(e)=>{
                 let { EditDataSolicitud } = this.state;
-                EditDataSolicitud.Categoria = e.target.value;
+                EditDataSolicitud.Fecha = e.target.value;
                 this.setState({ EditDataSolicitud });
                 }
               }/>
@@ -292,22 +299,22 @@ class CRUDSolicitud extends Component {
 
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.UpdateSolicitud.bind(this)}>Actualizar</Button>
+            <Button color="warning" onClick={this.UpdateSolicitud.bind(this)}>Actualizar</Button>
             <Button color="secondary" onClick={this.toggleEditSolicitud.bind(this)}>Cancelar</Button>
           </ModalFooter>
         </Modal>
     
-        <Table>
+        <Table className="table-bordered">
           <thead>
             <tr>
               <th>#</th>
               <th>Cliente</th>
-              <th>Corre</th>
+              <th>Correo</th>
               <th>Asunto</th>
               <th>Detalle</th>
               <th>Prioridad</th>
               <th>Aula</th>
-              <th>Categoria</th>
+              <th>Fecha esperada</th>
             </tr>
           </thead>
           <tbody>
