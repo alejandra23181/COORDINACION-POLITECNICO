@@ -108,8 +108,6 @@ class CRUDSolicitud extends Component {
     });
   }
 
-
-
   //Render
   render() {
     let solicitudes = this.state.solicitudes.map((solicitud) => {
