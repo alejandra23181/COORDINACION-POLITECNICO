@@ -93,11 +93,7 @@ class CRUDSolicitud extends Component {
   }
 
   //Delete
-  deleteSolicitud(id) {
-    axios.delete('http://localhost:3001/solicitudes/' + id).then((response) => {
-      this._refreshSolicitud();
-    });
-  }
+  
 
   //Refresh
   _refreshSolicitud() {
@@ -108,6 +104,22 @@ class CRUDSolicitud extends Component {
     });
   }
 
+  ///////////////77
+
+  
+  deleteSolicitud(id){
+    if (window.confirm("¿Estas seguro de eliminar esta solicitud?")) {
+      axios.delete('http://localhost:3001/solicitudes/' + id).then((response) => {
+      this._refreshSolicitud();
+    });
+  }
+  }
+
+  CancelarAccion(){
+    window.confirm("¿Estas seguro de eliminar esta solicitud?");
+  }
+
+  
   //Render
   render() {
     let solicitudes = this.state.solicitudes.map((solicitud) => {
@@ -123,7 +135,7 @@ class CRUDSolicitud extends Component {
           <td>{solicitud.Fecha}</td>
           <td>
             <Button color="success" size="sm" className="mr-2" onClick={this.editSolicitud.bind(this, solicitud.id, solicitud.Cliente, solicitud.Correo, solicitud.Asunto, solicitud.Detalle, solicitud.Prioridad, solicitud.Aula, solicitud.Fecha)}>Actualizar</Button>
-            <Button color="danger" size="sm" onClick={this.deleteSolicitud.bind(this, solicitud.id)}>Eliminar</Button>
+            <Button color="danger" size="sm"  onClick={this.deleteSolicitud.bind(this, solicitud.id)}>Eliminar</Button>
           </td>
         </tr>
       )
@@ -236,7 +248,7 @@ class CRUDSolicitud extends Component {
           </ModalBody>
           <ModalFooter>
             <Button color="warning" onClick={this.addSolicitud.bind(this)}>Enviar</Button>
-            <Button color="secondary" onClick={this.toggleNewSolicitud.bind(this)}>Cancelar</Button>
+            <Button color="secondary" onClick={this.CancelarAccion.bind(this)} onClickCapture={this.toggleNewSolicitud.bind(this)}>Cancelar</Button>
           </ModalFooter>
         </Modal>
 
