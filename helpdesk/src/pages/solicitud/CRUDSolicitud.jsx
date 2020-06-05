@@ -240,7 +240,7 @@ class CRUDSolicitud extends Component {
           </ModalBody>
           <ModalFooter>
             <Button color="warning" onClick={this.addSolicitud.bind(this)}>Enviar</Button>
-            <Button color="secondary" onClick={this.CancelarAccion.bind(this)} onClickCapture={this.toggleNewSolicitud.bind(this)}>Cancelar</Button>
+            <Button color="secondary" onClick={this.toggleNewSolicitud.bind(this)}>Cancelar</Button>
           </ModalFooter>
         </Modal>
 
