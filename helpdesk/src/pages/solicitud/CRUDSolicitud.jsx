@@ -104,21 +104,13 @@ class CRUDSolicitud extends Component {
     });
   }
 
-  ///////////////77
-
-  
-  deleteSolicitud(id){
+    deleteSolicitud(id){
     if (window.confirm("¿Estas seguro de eliminar esta solicitud?")) {
       axios.delete('http://localhost:3001/solicitudes/' + id).then((response) => {
       this._refreshSolicitud();
     });
   }
   }
-
-  CancelarAccion(){
-    window.confirm("¿Estas seguro de eliminar esta solicitud?");
-  }
-
   
   //Render
   render() {
