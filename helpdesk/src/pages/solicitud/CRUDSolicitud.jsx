@@ -119,6 +119,7 @@ class CRUDSolicitud extends Component {
           }
         });
       });
+      alert('Insertado con exito');
     } else {
       alert('Ingrese toda la información');
     }
