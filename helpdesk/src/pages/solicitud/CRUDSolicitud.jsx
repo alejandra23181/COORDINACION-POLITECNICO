@@ -51,23 +51,6 @@ class CRUDSolicitud extends Component {
     })
   }
 
-  addSolicitud() {
-    axios.post('http://localhost:3001/solicitudes', this.state.NewDataSolicitud).then((response) => {
-      let { solicitudes } = this.state;
-      solicitudes.push(response.data);
-      this.setState({
-        solicitudes, NewSolicitud: false, NewDataSolicitud: {
-          Cliente: '',
-          Correo: '',
-          Asunto: '',
-          Detalle: '',
-          Prioridad: '',
-          Aula: '',
-          Fecha: ''
-        }
-      });
-    });
-  }
 
   //Editar
 
@@ -86,6 +69,8 @@ class CRUDSolicitud extends Component {
 
   }
 
+  //////////////////////////////////////////////////////////////////
+
   editSolicitud(id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha) {
     this.setState({
       EditDataSolicitud: { id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha }, EditMSolicitud: !this.state.EditMSolicitud
@@ -93,7 +78,7 @@ class CRUDSolicitud extends Component {
   }
 
   //Delete
-  
+
 
   //Refresh
   _refreshSolicitud() {
@@ -104,14 +89,41 @@ class CRUDSolicitud extends Component {
     });
   }
 
-    deleteSolicitud(id){
+  deleteSolicitud(id) {
     if (window.confirm("¿Estas seguro de eliminar esta solicitud?")) {
       axios.delete('http://localhost:3001/solicitudes/' + id).then((response) => {
-      this._refreshSolicitud();
-    });
+        this._refreshSolicitud();
+      });
+    }
   }
+
+
+  addSolicitud() {
+
+    if (this.state.NewDataSolicitud.Cliente !== '' && this.state.NewDataSolicitud.Correo !== '' &&
+      this.state.NewDataSolicitud.Asunto !== '' && this.state.NewDataSolicitud.Detalle !== '' &&
+      this.state.NewDataSolicitud.Prioridad !== '' && this.state.NewDataSolicitud.Aula !== '' &&
+      this.state.NewDataSolicitud.Fecha !== '') {
+      axios.post('http://localhost:3001/solicitudes', this.state.NewDataSolicitud).then((response) => {
+        let { solicitudes } = this.state;
+        solicitudes.push(response.data);
+        this.setState({
+          solicitudes, NewSolicitud: false, NewDataSolicitud: {
+            Cliente: '',
+            Correo: '',
+            Asunto: '',
+            Detalle: '',
+            Prioridad: '',
+            Aula: '',
+            Fecha: ''
+          }
+        });
+      });
+    } else {
+      alert('Ingrese toda la información');
+    }
   }
-  
+
   //Render
   render() {
     let solicitudes = this.state.solicitudes.map((solicitud) => {
@@ -127,7 +139,7 @@ class CRUDSolicitud extends Component {
           <td>{solicitud.Fecha}</td>
           <td>
             <Button color="success" size="sm" className="mr-2" onClick={this.editSolicitud.bind(this, solicitud.id, solicitud.Cliente, solicitud.Correo, solicitud.Asunto, solicitud.Detalle, solicitud.Prioridad, solicitud.Aula, solicitud.Fecha)}>Actualizar</Button>
-            <Button color="danger" size="sm"  onClick={this.deleteSolicitud.bind(this, solicitud.id)}>Eliminar</Button>
+            <Button color="danger" size="sm" onClick={this.deleteSolicitud.bind(this, solicitud.id)}>Eliminar</Button>
           </td>
         </tr>
       )
@@ -146,7 +158,7 @@ class CRUDSolicitud extends Component {
               <Col md={6}>
                 <FormGroup>
                   <Label for="Cliente">Cliente</Label>
-                  <Input id="Cliente" value={this.state.NewDataSolicitud.Cliente} onChange={(e) => {
+                  <Input required name="Cliente" id="Cliente" placeholder="Ingrese su nombre completo." value={this.state.NewDataSolicitud.Cliente} onChange={(e) => {
                     let { NewDataSolicitud } = this.state;
                     NewDataSolicitud.Cliente = e.target.value;
                     this.setState({ NewDataSolicitud });
@@ -158,7 +170,7 @@ class CRUDSolicitud extends Component {
 
                 <FormGroup>
                   <Label for="Correo">Correo</Label>
-                  <Input id="Correo" value={this.state.NewDataSolicitud.Correo} onChange={(e) => {
+                  <Input required id="Correo" type="email" placeholder="Ingrese su correo (Formato de correo)." value={this.state.NewDataSolicitud.Correo} onChange={(e) => {
                     let { NewDataSolicitud } = this.state;
                     NewDataSolicitud.Correo = e.target.value;
                     this.setState({ NewDataSolicitud });
@@ -173,7 +185,7 @@ class CRUDSolicitud extends Component {
                 <FormGroup>
 
                   <Label for="Asunto">Asunto</Label>
-                  <Input id="Asunto" value={this.state.NewDataSolicitud.Asunto} onChange={(e) => {
+                  <Input required id="Asunto" placeholder="Ingrese el asunto de su solicitud." value={this.state.NewDataSolicitud.Asunto} onChange={(e) => {
                     let { NewDataSolicitud } = this.state;
                     NewDataSolicitud.Asunto = e.target.value;
                     this.setState({ NewDataSolicitud });
@@ -184,7 +196,7 @@ class CRUDSolicitud extends Component {
               <Col md={6}>
                 <FormGroup>
                   <Label for="Detalle">Detalle</Label>
-                  <Input id="Detalle" value={this.state.NewDataSolicitud.Detalle} onChange={(e) => {
+                  <Input required id="Detalle" placeholder="Ingrese el detalle de su solicitud." value={this.state.NewDataSolicitud.Detalle} onChange={(e) => {
                     let { NewDataSolicitud } = this.state;
                     NewDataSolicitud.Detalle = e.target.value;
                     this.setState({ NewDataSolicitud });
@@ -198,7 +210,7 @@ class CRUDSolicitud extends Component {
               <Col md={6}>
                 <FormGroup>
                   <Label for="Prioridad">Prioridad</Label>
-                  <Input id="Prioridad" type="select" value={this.state.NewDataSolicitud.Prioridad} onChange={(e) => {
+                  <Input required id="Prioridad" type="select" value={this.state.NewDataSolicitud.Prioridad} onChange={(e) => {
                     let { NewDataSolicitud } = this.state;
                     NewDataSolicitud.Prioridad = e.target.value;
                     this.setState({ NewDataSolicitud });
@@ -215,7 +227,7 @@ class CRUDSolicitud extends Component {
               <Col md={6}>
                 <FormGroup>
                   <Label for="Aula">Aula</Label>
-                  <Input id="Aula" value={this.state.NewDataSolicitud.Aula} onChange={(e) => {
+                  <Input required id="Aula" type="number" placeholder="Ingrese el aula." value={this.state.NewDataSolicitud.Aula} onChange={(e) => {
                     let { NewDataSolicitud } = this.state;
                     NewDataSolicitud.Aula = e.target.value;
                     this.setState({ NewDataSolicitud });
@@ -228,7 +240,7 @@ class CRUDSolicitud extends Component {
               <Col md={6}>
                 <FormGroup>
                   <Label for="Fecha">Fecha</Label>
-                  <Input id="Fecha" type="date" value={this.state.NewDataSolicitud.Fecha} onChange={(e) => {
+                  <Input required id="Fecha" type="date" value={this.state.NewDataSolicitud.Fecha} onChange={(e) => {
                     let { NewDataSolicitud } = this.state;
                     NewDataSolicitud.Fecha = e.target.value;
                     this.setState({ NewDataSolicitud });
@@ -243,6 +255,10 @@ class CRUDSolicitud extends Component {
             <Button color="secondary" onClick={this.toggleNewSolicitud.bind(this)}>Cancelar</Button>
           </ModalFooter>
         </Modal>
+
+
+
+
 
 
         <Modal isOpen={this.state.EditMSolicitud} toggle={this.toggleEditSolicitud.bind(this)}>
