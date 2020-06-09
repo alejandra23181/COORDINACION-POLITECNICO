@@ -19,7 +19,7 @@ function Menu () {
             path:'/a-quien-servimos'
         }, {
             name:'Inicio de sesión',
-            path:'/login'
+            path:'/Login'
         }
     ]
     
