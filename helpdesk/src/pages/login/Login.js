@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
 
 class Login extends Component {
-     constructor() {
+    constructor() {
         super();
         this.state = {
             data: [],
@@ -27,14 +26,12 @@ class Login extends Component {
     handleSubmit(e) {
         e.preventDefault();
         if (this.state.email !== '' && this.state.password !== '') {
-            if(this.state.email == "maria_montoya23181@elpoli.edu.co" && this.state.password == "maria1234"){
-                alert("admin");
+            if (this.state.email == "maria_montoya23181@elpoli.edu.co" && this.state.password == "maria1234") {
                 this.props.history.push('/Administrador');
-            }else{
-                if(this.state.email == "yuliana_estrada23181@elpoli.edu.co" && this.state.password == "yuli123"){
-                    alert("docente");
+            } else {
+                if (this.state.email == "yuliana_estrada23181@elpoli.edu.co" && this.state.password == "yuli123") {
                     this.props.history.push('/Usuario');
-                }else{
+                } else {
                     alert("El usuario no existe");
                 }
             }

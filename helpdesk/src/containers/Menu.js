@@ -24,8 +24,8 @@ function Menu() {
         <Route path="/a-quien-servimos" component={Servimos} />
         <PrivateRoute path="/solicitudes" component={CRUDSolicitud} />   
         <Route path="/login" component={Login} />  
-        <Route path="/Administrador" component={Administrador} />  
-        <Route path="/Usuario" component={Usuario} />        
+        <PrivateRoute path="/Administrador" component={Administrador} />  
+        <PrivateRoute path="/Usuario" component={Usuario} />        
         <Route path="/" component={Home} />
       </Switch>
       <Footer />
