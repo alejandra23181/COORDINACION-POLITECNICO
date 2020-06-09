@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router';
 
 class Login extends Component {
      constructor() {
@@ -26,7 +27,17 @@ class Login extends Component {
     handleSubmit(e) {
         e.preventDefault();
         if (this.state.email !== '' && this.state.password !== '') {
-            alert("ok")
+            if(this.state.email == "maria_montoya23181@elpoli.edu.co" && this.state.password == "maria1234"){
+                alert("admin");
+                this.props.history.push('/Administrador');
+            }else{
+                if(this.state.email == "yuliana_estrada23181@elpoli.edu.co" && this.state.password == "yuli123"){
+                    alert("docente");
+                    this.props.history.push('/Usuario');
+                }else{
+                    alert("El usuario no existe");
+                }
+            }
         } else {
             alert("Por favor ingrese toda la información")
         }

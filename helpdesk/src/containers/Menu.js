@@ -11,6 +11,7 @@ import PrivateRoute from '../Auth';
 import CRUDSolicitud from '../pages/solicitud/CRUDSolicitud';
 import Login from '../pages/login/Login';
 import Administrador from '../pages/login/Administrador';
+import Usuario from '../pages/login/Usuario';
 
 
 function Menu() {
@@ -23,7 +24,8 @@ function Menu() {
         <Route path="/a-quien-servimos" component={Servimos} />
         <PrivateRoute path="/solicitudes" component={CRUDSolicitud} />   
         <Route path="/login" component={Login} />  
-        <Route path="/Administrador" component={Administrador} />        
+        <Route path="/Administrador" component={Administrador} />  
+        <Route path="/Usuario" component={Usuario} />        
         <Route path="/" component={Home} />
       </Switch>
       <Footer />
