@@ -26,13 +26,13 @@ class Login extends Component {
     handleSubmit(e) {
         e.preventDefault();
         if (this.state.email !== '' && this.state.password !== '') {
-            if (this.state.email == "maria_montoya23181@elpoli.edu.co" && this.state.password == "maria1234") {
+            if (this.state.email === "maria_montoya23181@elpoli.edu.co" && this.state.password === "maria1234") {
                 this.props.history.push('/Administrador');
             } else {
-                if (this.state.email == "yuliana_estrada23181@elpoli.edu.co" && this.state.password == "yuli123") {
+                if (this.state.email === "yuliana_estrada23181@elpoli.edu.co" && this.state.password === "yuli123") {
                     this.props.history.push('/Usuario');
                 } else {
-                    alert("El usuario no existe");
+                    alert("El usuario ó la contraseña son incorrectos");
                 }
             }
         } else {
