@@ -75,7 +75,6 @@ class CRUDSolicitud extends Component {
     }
   }
 
-
   //////////////////////////////////////////////////////////////////
 
   editSolicitud(id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha) {
