@@ -54,19 +54,27 @@ class CRUDSolicitud extends Component {
 
   //Editar
 
-  UpdateSolicitud() {
+    UpdateSolicitud() {
 
-    let { Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha } = this.state.EditDataSolicitud;
+      let { Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha } = this.state.EditDataSolicitud;
 
-    axios.put('http://localhost:3001/solicitudes/' + this.state.EditDataSolicitud.id, {
-      Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha
-    }).then((response) => {
-      this._refreshSolicitud();
-      this.setState({
-        EditMSolicitud: false, EditDataSolicitud: { id: '', Cliente: '', Correo: '', Asunto: '', Detalle: '', Prioridad: '', Aula: '', Fecha: '' }
-      })
-    });
+      if (this.state.EditDataSolicitud.Cliente !== '' && this.state.EditDataSolicitud.Correo !== '' &&
+      this.state.EditDataSolicitud.Asunto !== '' && this.state.EditDataSolicitud.Detalle !== ''  &&
+      this.state.EditDataSolicitud.Prioridad  !== '' && this.state.EditDataSolicitud.Aula  !== '' &&
+      this.state.EditDataSolicitud.Fecha !== '') {
 
+      axios.put('http://localhost:3001/solicitudes/' + this.state.EditDataSolicitud.id, {
+        Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha
+      }).then((response) => {
+        this._refreshSolicitud();
+        this.setState({
+          EditMSolicitud: false, EditDataSolicitud: { id: '', Cliente: '', Correo: '', Asunto: '', Detalle: '', Prioridad: '', Aula: '', Fecha: '' }
+        })
+       }); 
+      alert('Actualizado con exito');
+    }else{
+      alert('Ingrese toda la información');
+    }
   }
 
   //////////////////////////////////////////////////////////////////
@@ -76,6 +84,7 @@ class CRUDSolicitud extends Component {
       EditDataSolicitud: { id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha }, EditMSolicitud: !this.state.EditMSolicitud
     });
   }
+
 
   //Delete
 
@@ -138,9 +147,7 @@ class CRUDSolicitud extends Component {
           <td>{solicitud.Prioridad}</td>
           <td>{solicitud.Aula}</td>
           <td>{solicitud.Fecha}</td>
-          <td>
-            <Button color="danger" size="sm" onClick={this.deleteSolicitud.bind(this, solicitud.id)}>Eliminar</Button>
-          </td>
+          
         </tr>
       )
     });

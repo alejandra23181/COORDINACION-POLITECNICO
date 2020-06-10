@@ -6,11 +6,7 @@
       "Asunto": "Daño con internet",
       "Detalle": "Daño con internet",
       "Prioridad": "Media",
-<<<<<<< HEAD
-      "Aula": "",
-=======
-      "Aula": "209",
->>>>>>> a95088180abf604b10c9ec3922498b7f2bf584cc
+      "Aula": "201",
       "Fecha": "2020-05-14",
       "id": 8
     },
@@ -40,7 +36,7 @@
       "Asunto": "Daños pc",
       "Detalle": "Daño en el disco ",
       "Prioridad": "Media",
-      "Aula": "207",
+      "Aula": "444",
       "Fecha": "1212-12-12",
       "id": 11
     }

@@ -58,10 +58,10 @@ class CRUDSolicitud extends Component {
 
       let { Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha } = this.state.EditDataSolicitud;
 
-      if (this.state.EditDataSolicitud.Cliente && this.state.EditDataSolicitud.Correo  &&
-      this.state.EditDataSolicitud.Asunto && this.state.EditDataSolicitud.Detalle  &&
-      this.state.EditDataSolicitud.Prioridad  && this.state.EditDataSolicitud.Aula  &&
-      this.state.EditDataSolicitud.Fecha ) {
+      if (this.state.EditDataSolicitud.Cliente !== '' && this.state.EditDataSolicitud.Correo !== '' &&
+      this.state.EditDataSolicitud.Asunto !== '' && this.state.EditDataSolicitud.Detalle !== ''  &&
+      this.state.EditDataSolicitud.Prioridad  !== '' && this.state.EditDataSolicitud.Aula  !== '' &&
+      this.state.EditDataSolicitud.Fecha !== '') {
 
       axios.put('http://localhost:3001/solicitudes/' + this.state.EditDataSolicitud.id, {
         Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha
@@ -72,6 +72,8 @@ class CRUDSolicitud extends Component {
         })
        }); 
       alert('Actualizado con exito');
+    }else{
+      alert('Ingrese toda la información');
     }
   }
 
