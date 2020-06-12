@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../login/styles/style.css';
 import Image from '../../components/images/JIC.jpg';
+import Menu from '../../components/Menu/Menu';
+
 
 class Login extends Component {
+
     constructor() {
         super();
         this.state = {
@@ -45,19 +48,24 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="container">
-                <form className="form-signin" onSubmit={this.handleSubmit} >
-                    <img className="mb-41" src={Image} alt="" width="75" height="75"></img>
-                    <h1 className="h3 mb-3 font-weight-normal">Inicio de sesión</h1>
-                    <label for="inputEmail" className="sr-only" >Correo</label>
-                    <input type="email" id="email" className="form-control1"  placeholder="Ingresar correo electrónico" name="email" value={this.state.email} onChange={this.handleChange} required autofocus></input>
-                    <label for="inputPassword" className="sr-only">Clave</label>
-                    <input  type="password" id="password" className="form-control1" placeholder="Ingresar contraseña" name="password" value={this.state.password} onChange={this.handleChange} required></input>
-                    <button class="btn1 btn-lg btn-primary btn-block"  type="submit">Ingresar</button>
-                </form>
+            <div className="">
+                <Menu />
+                <div className="container">
+                    <form className="form-signin" onSubmit={this.handleSubmit} >
+                        <img className="mb-41" src={Image} alt="" width="75" height="75"></img>
+                        <h1 className="h3 mb-3 font-weight-normal">Inicio de sesión</h1>
+                        <label for="inputEmail" className="sr-only" >Correo</label>
+                        <input type="email" id="email" className="form-control1" placeholder="Ingresar correo electrónico" name="email" value={this.state.email} onChange={this.handleChange} required autofocus></input>
+                        <label for="inputPassword" className="sr-only">Clave</label>
+                        <input type="password" id="password" className="form-control1" placeholder="Ingresar contraseña" name="password" value={this.state.password} onChange={this.handleChange} required></input>
+                        <button class="btn1 btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+                    </form>
+                </div>
             </div>
         );
     }
 }
+
+
 
 export default Login;

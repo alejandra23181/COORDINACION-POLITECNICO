@@ -3,6 +3,7 @@ import Presentacion from "../../components/Presentacion/Presentacion";
 import C1 from '../../components/images/nuestros-servicios/logo-1.png';
 import C2 from '../../components/images/nuestros-servicios/logo-2.png';
 import C3 from '../../components/images/nuestros-servicios/logo-3.png';
+import Menu from '../../components/Menu/Menu';
 
 
 export default function NuestrosServicios() {
@@ -14,14 +15,16 @@ export default function NuestrosServicios() {
     ]
 
     return (
-
-        <main className="cp-nosotros" >
-            <div className="cp-container" >
-                <article className='cp-article' >
-                    <h4>NUESTROS SERVICIOS</h4>
-                </article>
-                <Presentacion data={data} />
-            </div>
-        </main>
+        <div className="">
+            <Menu />
+            <main className="cp-nosotros" >
+                <div className="cp-container" >
+                    <article className='cp-article' >
+                        <h4>NUESTROS SERVICIOS</h4>
+                    </article>
+                    <Presentacion data={data} />
+                </div>
+            </main>
+        </div>
     )
 }

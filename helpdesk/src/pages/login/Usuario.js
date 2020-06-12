@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import '../../components/styles/Solicitudes.css';
 import axios from 'axios';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Label, Table, Input, Button, FormGroup, Row, Col } from 'reactstrap';
-
+import Menu from '../../components/Menu/MenuUsuario';
 
 class CRUDSolicitud extends Component {
   state = {
@@ -152,6 +152,8 @@ class CRUDSolicitud extends Component {
       )
     });
     return (
+      <div className="">
+      <Menu />
       <div className="App container">
 
         <h4>LISTADO DE SOLICITUDES</h4>
@@ -382,6 +384,7 @@ class CRUDSolicitud extends Component {
             {solicitudes}
           </tbody>
         </Table>
+      </div>
       </div>
 
     );

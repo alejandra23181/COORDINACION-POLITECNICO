@@ -1,13 +1,14 @@
 import React from 'react';
 import Carrusel from '../../components/Carrusel/Carrusel';
 import '../../components/styles/home.scss';
-
+import Menu from '../../components/Menu/Menu';
 
 export default function Home() {
 
 
     return (
         <main className="cp-home" role="main">
+            <Menu />
             <Carrusel />
             <section className='cp-home-container'>
                 <article className='cp-article' >

@@ -3,6 +3,8 @@ import '../../components/styles/Nosotros.scss';
 import Presentacion from "../../components/Presentacion/Presentacion";
 import C1 from '../../components/images/nosotros/mision.PNG';
 import C2 from '../../components/images/nosotros/vision.PNG';
+import Menu from '../../components/Menu/Menu';
+
 
 export default function Nosotros() {
     const data = [
@@ -11,17 +13,18 @@ export default function Nosotros() {
     ]
 
     return (
-
-        <main className="cp-nosotros" >
-            <div className="cp-container" >
-                <article className='cp-article' >
-                    <h4>ACERCA DE NOSOTROS</h4>
-                </article>
-                <div className="cp-nuevos">
-                    <Presentacion data={data} />
+        <div className="">
+            <Menu />
+            <main className="cp-nosotros" >
+                <div className="cp-container" >
+                    <article className='cp-article' >
+                        <h4>ACERCA DE NOSOTROS</h4>
+                    </article>
+                    <div className="cp-nuevos">
+                        <Presentacion data={data} />
+                    </div>
                 </div>
-            </div>
-        </main>
-
+            </main>
+        </div>
     )
 }

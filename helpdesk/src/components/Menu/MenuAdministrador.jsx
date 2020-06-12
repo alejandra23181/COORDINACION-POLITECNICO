@@ -3,14 +3,21 @@ import "../styles/Menu.scss";
 import { NavLink } from 'react-router-dom';
 
 
-function Menu2 () {
+function MenuAdministrador () {
     const items = [
         {
             name:'Inicio',
-            path:'/'
+            path:'/Administrador'
         }, {
-            name:'Solicitudes',
-            path:'/solicitudes'
+            name:'Gestión disponibilidad',
+            path:'/Administrador'
+        }, {
+            name:'Administrar solicitudes',
+            path:'/Administrador'
+        }
+        , {
+            name:'Cerrar sesión',
+            path:'/'
         }
     ]
     
@@ -28,4 +35,4 @@ function Menu2 () {
     );
 }
 
-export default Menu2;
+export default MenuAdministrador;
