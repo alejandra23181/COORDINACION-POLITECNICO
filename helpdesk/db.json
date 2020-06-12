@@ -21,16 +21,6 @@
       "id": 9
     },
     {
-      "Cliente": "David Noreña",
-      "Correo": "david@elpoli.com",
-      "Asunto": "Daños mouse",
-      "Detalle": "Daño",
-      "Prioridad": "Media",
-      "Aula": "207",
-      "Fecha": "2000-12-12",
-      "id": 10
-    },
-    {
       "Cliente": "Estefanìa Congote",
       "Correo": "estefania@gmail.com",
       "Asunto": "Daños pc",

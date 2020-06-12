@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../login/styles/style.css';
+import Image from '../../components/images/JIC.jpg';
 
 class Login extends Component {
     constructor() {
@@ -42,21 +45,15 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="FormCenter">
-                <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="email">Correo</label>
-                        <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
-                    </div>
-
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="password">Clave</label>
-                        <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    </div>
-
-                    <div className="FormField">
-                        <button className="FormField__Button mr-20">Sign In</button>
-                    </div>
+            <div className="container">
+                <form className="form-signin" onSubmit={this.handleSubmit} >
+                    <img className="mb-41" src={Image} alt="" width="75" height="75"></img>
+                    <h1 className="h3 mb-3 font-weight-normal">Inicio de sesión</h1>
+                    <label for="inputEmail" className="sr-only" >Correo</label>
+                    <input type="email" id="email" className="form-control1"  placeholder="Ingresar correo electrónico" name="email" value={this.state.email} onChange={this.handleChange} required autofocus></input>
+                    <label for="inputPassword" className="sr-only">Clave</label>
+                    <input  type="password" id="password" className="form-control1" placeholder="Ingresar contraseña" name="password" value={this.state.password} onChange={this.handleChange} required></input>
+                    <button class="btn1 btn-lg btn-primary btn-block"  type="submit">Ingresar</button>
                 </form>
             </div>
         );
