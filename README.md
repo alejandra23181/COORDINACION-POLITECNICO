@@ -1,35 +1,68 @@
-# COORDINACION-POLITECNICO
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Available Scripts
 
-EQUIPO DE TRABAJO Y ROLES:
+In the project directory, you can run:
 
-				Maria Alejandra Montoya Acevedo -Lider, Desarrollador.
+### `npm start`
 
-				Yuliana Estrada Calle - Consultor, Desarrollador.
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-				Estafanía Congote Grajales - Front-end, Desarrollador.
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-				David Noreña - Analista de pruebas, Desarrollador.
+### `npm test`
 
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
 
-TÍTULO DEL PROYECTO: Sistema de información para la coordinación técnica y física del área de informática para la instituciòn universitaria “Politécnico Colombiano Jaime Isaza Cadavid”
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
- 
-DESCRIPCIÓN DEL PROBLEMA Y PLANTEAMIENTO DE PROCESO ACTUAL:
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-Actualmente, en la institución universitaria Politécnico Colombiano Jaime Isaza Cadavid, se evidenció la gran inconformidad por parte de la comunidad acerca del sistema en el cual está sometido la coordinación del área de informática, ya que muchas veces por falta de tiempo o por desinformación no se le da solución a los múltiples inconvenientes que se presentan a la hora de hacer uso  de las aulas de informática o al realizar diferentes acciones sobre estas, como lo son, saber la disponibilidad, realizar préstamos o reportar problemas dentro de estas. 
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Debido a que, los coordinadores todo el proceso de recolección de solicitudes y reportes está siendo realizada en Excel. De igual manera, se desconoce qué fallas presentan los equipos, las pérdidas y que parte del personal está trabajando para dar solución a estos incidentes.
+### `npm run eject`
 
-PROPUESTA:
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-Crear un sistema de información en el cual se puedan realizar los distintos procesos: Creación de solicitudes, tareas, usuarios, manipulación de disponibilidad y reportes de incidentes que se presentan en las aulas de informática, con el fin de poder dar solución a los problemas evidenciados por los usuarios que hacen parte de la comunidad politécnica, y de esta manera poder disminuir la molestia que se presenta al no dar solución a estos.
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-JUSTIFICACIÓN:
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-Se planteó esta propuesta, ya que al evidenciar dicha problemática pudimos conocer cuánto afecta esto a la institución, debido a que las aulas de informática son unas de las más visitadas por toda la comunidad universitaria y al presentarse esta gran cantidad de incidentes no se puede hacer uso de todos los recursos existentes, ya sea por problemas básicos o graves. 
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-Este sistema de información va a servir para poder darle solución a las múltiples solicitudes que se presentan y que son registradas por parte de la comunidad, también se va a poder reportar cualquier incidente que se presente, por ende,  se  podrá llevar a cabo una auditoría de los diferentes casos que se están presentando en la institución , gracias a esto los coordinadores del área van a poder llegar a tomar decisiones acerca del comportamiento y el uso que se le dan estas.
+## Learn More
 
-Prototipo: https://marvelapp.com/57d7ji5
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
