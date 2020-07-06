@@ -1,25 +1,14 @@
 {
   "solicitudes": [
     {
-      "id": 8,
       "Cliente": "Maria Alejandra Montoya ",
       "Correo": "acevedoalejandra11@gmail.com",
       "Asunto": "Daño con internet",
       "Detalle": "Daño con internet",
       "Prioridad": "Media",
       "Aula": "201",
-      "Fecha": "2020-05-14"
-    },
-    {
-      "id": 9,
-      "Cliente": "Yuliana Estrada Calle",
-      "Correo": "yulianaestrada@gmail.com",
-      "Asunto": "Daños equipos",
-      "Detalle": "Daños equipos",
-      "Prioridad": "Alta",
-      "Aula": "209",
-      "Fecha": "2020-05-29"
-      
+      "Fecha": "2020-05-14",
+      "id": 8
     }
   ]
 }
