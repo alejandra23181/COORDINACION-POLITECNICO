@@ -19,10 +19,10 @@ function Menu() {
         <Route path="/nosotros" component={Nosotros} />
         <Route path="/nuestros-servicios" component={NuestrosServicios} />
         <Route path="/a-quien-servimos" component={Servimos} />
-        <PrivateRoute path="/solicitudes" component={CRUDSolicitud} />   
+        <Route path="/solicitudes" component={CRUDSolicitud} />   
         <Route path="/login" component={Login} /> 
-        <PrivateRoute path="/Administrador" component={Administrador} /> 
-        <PrivateRoute path="/Usuario" component={Usuario} /> 
+        <Route path="/Administrador" component={Administrador} /> 
+        <Route path="/Usuario" component={Usuario} /> 
         <Route path="/" component={Home} />
       </Switch>
       <Footer />
