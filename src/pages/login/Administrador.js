@@ -3,6 +3,7 @@ import '../../components/styles/Solicitudes.css';
 import axios from 'axios';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Label, Table, Input, Button, FormGroup, Row, Col } from 'reactstrap';
 import Menu from '../../components/Menu/MenuAdministrador';
+import * as firebase from 'firebase';
 
 class CRUDSolicitud extends Component {
     state = {
@@ -56,32 +57,43 @@ class CRUDSolicitud extends Component {
 
     UpdateSolicitud() {
 
-        let { Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha } = this.state.EditDataSolicitud;
+        let { key, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha } = this.state.EditDataSolicitud;
 
         if (this.state.EditDataSolicitud.Cliente !== '' && this.state.EditDataSolicitud.Correo !== '' &&
             this.state.EditDataSolicitud.Asunto !== '' && this.state.EditDataSolicitud.Detalle !== '' &&
             this.state.EditDataSolicitud.Prioridad !== '' && this.state.EditDataSolicitud.Aula !== '' &&
             this.state.EditDataSolicitud.Fecha !== '') {
 
-            axios.put('http://localhost:3001/solicitudes/' + this.state.EditDataSolicitud.id, {
+            firebase.firestore().collection('solicitudes').doc(key).update({
                 Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha
-            }).then((response) => {
-                this._refreshSolicitud();
+            }).then(() => {
+                alert('Actualizado con exito');
+            }).catch((error) => {
+                console.log(error);
+                alert("Error al actualizar");
+            }).finally(() => {
                 this.setState({
                     EditMSolicitud: false, EditDataSolicitud: { id: '', Cliente: '', Correo: '', Asunto: '', Detalle: '', Prioridad: '', Aula: '', Fecha: '' }
-                })
+                });
+                this._refreshSolicitud();
             });
-            alert('Actualizado con exito');
+            /* axios.put('http://localhost:3001/solicitudes/' + this.state.EditDataSolicitud.id, {
+                 Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha
+             }).then((response) => {
+                 this._refreshSolicitud();
+                 this.setState({
+                     EditMSolicitud: false, EditDataSolicitud: { id: '', Cliente: '', Correo: '', Asunto: '', Detalle: '', Prioridad: '', Aula: '', Fecha: '' }
+                 })
+             });*/
+
         } else {
             alert('Ingrese toda la información');
         }
     }
 
-    //////////////////////////////////////////////////////////////////
-
-    editSolicitud(id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha) {
+    editSolicitud(key, id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha) {
         this.setState({
-            EditDataSolicitud: { id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha }, EditMSolicitud: !this.state.EditMSolicitud
+            EditDataSolicitud: { key, id, Cliente, Correo, Asunto, Detalle, Prioridad, Aula, Fecha }, EditMSolicitud: !this.state.EditMSolicitud
         });
     }
 
@@ -91,18 +103,44 @@ class CRUDSolicitud extends Component {
 
     //Refresh
     _refreshSolicitud() {
-        axios.get('http://localhost:3001/solicitudes').then((response) => {
+        firebase.firestore().collection('solicitudes').get().then((response) => {
+            const data =
+                response.docs.map((m, key) => ({
+                    Asunto: m.get('Asunto'),
+                    Aula: m.get('Aula'),
+                    Cliente: m.get('Cliente'),
+                    Correo: m.get('Correo'),
+                    Detalle: m.get('Detalle'),
+                    Fecha: m.get('Fecha'),
+                    Prioridad: m.get('Prioridad'),
+                    id: key,
+                    key: m.id
+                }));
             this.setState({
-                solicitudes: response.data
+                solicitudes: data
             })
         });
+
+        /*  axios.get('http://localhost:3001/solicitudes').then((response) => {
+              this.setState({
+                  solicitudes: response.data
+              })
+          });*/
     }
 
-    deleteSolicitud(id) {
+    deleteSolicitud(key) {
         if (window.confirm("¿Estas seguro de eliminar esta solicitud?")) {
-            axios.delete('http://localhost:3001/solicitudes/' + id).then((response) => {
+            firebase.firestore().collection('solicitudes').doc(key).delete().then(() => {
+                alert("Eliminado correctamente");
+            }).catch((error) => {
+                console.log(error);
+                alert("Error al eliminar");
+            }).finally(() => {
                 this._refreshSolicitud();
             });
+            /*axios.delete('http://localhost:3001/solicitudes/' + id).then((response) => {
+                this._refreshSolicitud();
+            });*/
         }
     }
 
@@ -113,7 +151,24 @@ class CRUDSolicitud extends Component {
             this.state.NewDataSolicitud.Asunto !== '' && this.state.NewDataSolicitud.Detalle !== '' &&
             this.state.NewDataSolicitud.Prioridad !== '' && this.state.NewDataSolicitud.Aula !== '' &&
             this.state.NewDataSolicitud.Fecha !== '') {
-            axios.post('http://localhost:3001/solicitudes', this.state.NewDataSolicitud).then((response) => {
+            firebase.firestore().collection('solicitudes').add(this.state.NewDataSolicitud).then((response) => {
+
+                this._refreshSolicitud();
+                this.setState({
+                    NewSolicitud: false,
+                    NewDataSolicitud: {
+                        Cliente: '',
+                        Correo: '',
+                        Asunto: '',
+                        Detalle: '',
+                        Prioridad: '',
+                        Aula: '',
+                        Fecha: ''
+                    }
+                });
+            });
+
+            /*axios.post('http://localhost:3001/solicitudes', this.state.NewDataSolicitud).then((response) => {
                 let { solicitudes } = this.state;
                 solicitudes.push(response.data);
                 this.setState({
@@ -127,7 +182,7 @@ class CRUDSolicitud extends Component {
                         Fecha: ''
                     }
                 });
-            });
+            });*/
             alert('Insertado con exito');
         } else {
             alert('Ingrese toda la información');
@@ -149,8 +204,8 @@ class CRUDSolicitud extends Component {
                     <td>{solicitud.Aula}</td>
                     <td>{solicitud.Fecha}</td>
                     <td>
-                        <Button color="success" size="sm" className="mr-2" onClick={this.editSolicitud.bind(this, solicitud.id, solicitud.Cliente, solicitud.Correo, solicitud.Asunto, solicitud.Detalle, solicitud.Prioridad, solicitud.Aula, solicitud.Fecha)}>Actualizar</Button>
-                        <Button color="danger" size="sm" onClick={this.deleteSolicitud.bind(this, solicitud.id)}>Eliminar</Button>
+                        <Button color="success" size="sm" className="mr-2" onClick={this.editSolicitud.bind(this, solicitud.key, solicitud.id, solicitud.Cliente, solicitud.Correo, solicitud.Asunto, solicitud.Detalle, solicitud.Prioridad, solicitud.Aula, solicitud.Fecha)}>Actualizar</Button>
+                        <Button color="danger" size="sm" onClick={this.deleteSolicitud.bind(this, solicitud.key)}>Eliminar</Button>
                     </td>
                 </tr>
             )
