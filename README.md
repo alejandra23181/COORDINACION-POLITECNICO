@@ -11,7 +11,6 @@ de informática para la institución universitaria Politécnico Colombiano Jaime
 
 				Estafanía Congote Grajales - Front-end, Desarrollador.
 
-				David Noreña - Analista de pruebas, Desarrollador.
 
 *TÍTULO DEL PROYECTO:* 
 
