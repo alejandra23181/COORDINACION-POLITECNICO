@@ -14,7 +14,7 @@
     "jose-jwe-jws": "^0.2.2",
     "jsonwebtoken": "^8.5.1",
     "lodash.isempty": "^4.4.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "now": "^19.1.1",
     "react": "^16.13.1",
     "react-axios": "^2.0.3",
